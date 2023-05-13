@@ -30,7 +30,7 @@ const getContactById = async (req, res, next) =>
     });
 };
 
-const deleteContactById = async (req, res, next) =>
+//const deleteContactById = async (req, res, next) =>
 
 
 module.exports =

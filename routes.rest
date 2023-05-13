@@ -1,0 +1,17 @@
+###
+GET http://localhost:3000/contacts/644d7bd226896f63db09012d
+###
+GET http://localhost:3000/contacts/6450498f2195511de19a5ab4
+###
+GET http://localhost:3000/contacts/645049d92195511de19a5ab5
+###
+POST https://cloud.mongodb.com/v2/643e1d36fcb3da5a017da5ba#/metrics/replicaSet/643e1ec800f79547677b9f13/explorer/DBname/Contacts/find
+Content-Type: application/json
+
+{
+    "firstName": "Ashley",
+    "lastName": "Weaver",
+    "email": "aWeaver@test.com",
+    "favoriteColor": "Brown",
+    "birthday": "06/19/2000"
+}
