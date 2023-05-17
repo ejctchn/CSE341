@@ -45,16 +45,16 @@ Content-Type: application/json
 }
 
 ###
-PUT https://cse341-render-yq1g.onrender.com/contacts/645049d92195511de19a5ab5 HTTP/1.1
+PUT https://cse341-render-yq1g.onrender.com/contacts/64645b32bbf2cffee612177e HTTP/1.1
 Content-Type: application/json
 
 {
-    "firstName": "Chase",
-    "lastName": "Sorenson",
+    "firstName": "Ashley",
+    "lastName": "Weaver",
     "email": "sorensonemail@test.com",
     "favoriteColor": "Maroon",
     "birthday": "12/19/2000"
 }
 
 ###
-DELETE https://cse341-render-yq1g.onrender.com/contacts/645049d92195511de19a5ab5 HTTP/1.1
+DELETE https://cse341-render-yq1g.onrender.com/contacts/64645b32bbf2cffee612177e HTTP/1.1
