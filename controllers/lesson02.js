@@ -30,11 +30,26 @@ const getContactById = async (req, res, next) =>
     });
 };
 
+const postNewContact = async (req, res, next) =>
+{
+    const result = await mongodb
+        .getDb()
+        .db('DBname')
+        .collection('Contacts')
+        .post();
+    result.toArray().then((lists) => 
+    {
+        res.setHeader('Content-Type', 'application/json');
+        res.status(201).json(lists[0]);
+    });
+}
+
 //const deleteContactById = async (req, res, next) =>
 
 
 module.exports =
 {
     getAllContacts,
-    getContactById
+    getContactById,
+    postNewContact
 };
