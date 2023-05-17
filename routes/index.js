@@ -8,6 +8,7 @@ routes.get('/brooke', lesson01Controller.brookeRoute);
 
 module.exports = routes;
 */
+router.use('/', require('./swagger'));
 routes.use('/contacts', require('./contacts'));
 
 module.exports = routes;
