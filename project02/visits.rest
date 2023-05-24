@@ -1,0 +1,14 @@
+###
+GET http://localhost:3000/doc_visits/
+###
+POST http://localhost:3000/doc_visits/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "date": "19 Apr 2019",
+    "doc_fname": "William",
+    "doc_lname": "Ulrich",
+    "email": "wUlrich@RidgelineMed.com",
+    "prescription": "Adderall",
+    "refillable": false
+}

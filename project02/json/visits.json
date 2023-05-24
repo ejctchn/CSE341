@@ -1,0 +1,12 @@
+[{
+    "_id": {
+      "$oid": "61a921f6028954d4f0319e7d"
+    },
+    "date": "13 Apr 2019",
+    "doc_fname": "William",
+    "doc_lname": "Ulrich",
+    "email": "wUlrich@RidgelineMed.com",
+    "prescription": "None",
+    "refillable": "false"
+  }
+]
