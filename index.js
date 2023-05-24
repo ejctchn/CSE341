@@ -1,5 +1,5 @@
 // express web server
-const mongodb = require('project02/db/connect')
+const mongodb = require('./db/connect')
 const express = require('express');
 const app = express();
 const bodyParser = require('express');
@@ -12,7 +12,7 @@ app
         res.setHeader('Access-Control-Allow-Origin', '*');
         next();
     })
-    .use('/', require('project02/routes')); // Calls the routes to view the data
+    .use('/', require('./routes')); // Calls the routes to view the data
 
 mongodb.initDb((err, mongodb) => {
     if (err) {
