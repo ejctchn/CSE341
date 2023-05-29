@@ -3,12 +3,12 @@ const controller = require("../controllers/lesson05")
 
 routes.get('/', controller.getAllVisits);
 
-//routes.get('/:id', controller.getContactById);
-
 routes.post('/', controller.postNewVisit);
+
+routes.put('/:id', controller.updateVisit);
 
 //routes.put('/:id', controller.updateContact);
 
-//routes.delete('/:id', controller.deleteContactById);
+routes.delete('/:id', controller.deleteVisitById);
 
 module.exports = routes;
