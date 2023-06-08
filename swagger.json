@@ -2,13 +2,13 @@
   "swagger": "2.0",
   "info": {
     "title": "My API",
-    "description": "Temple API",
+    "description": "Doc Visits API",
     "version": "1.0.0"
   },
-  "host": "cse341-render-yq1g.onrender.com",
+  "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
     "/api-docs": {
@@ -18,7 +18,7 @@
         "responses": {}
       }
     },
-    "/contacts/": {
+    "/doc_visits/": {
       "get": {
         "description": "",
         "produces": [
@@ -28,6 +28,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       },
@@ -40,19 +43,22 @@
             "schema": {
               "type": "object",
               "properties": {
-                "firstName": {
+                "date": {
                   "example": "any"
                 },
-                "lastName": {
+                "doc_fname": {
+                  "example": "any"
+                },
+                "doc_lname": {
                   "example": "any"
                 },
                 "email": {
                   "example": "any"
                 },
-                "favoriteColor": {
+                "prescription": {
                   "example": "any"
                 },
-                "birthday": {
+                "refillable": {
                   "example": "any"
                 }
               }
@@ -69,26 +75,7 @@
         }
       }
     },
-    "/contacts/{id}": {
-      "get": {
-        "description": "",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
+    "/doc_visits/{id}": {
       "put": {
         "description": "",
         "parameters": [
@@ -104,19 +91,22 @@
             "schema": {
               "type": "object",
               "properties": {
-                "firstName": {
+                "date": {
                   "example": "any"
                 },
-                "lastName": {
+                "doc_fname": {
+                  "example": "any"
+                },
+                "doc_lname": {
                   "example": "any"
                 },
                 "email": {
                   "example": "any"
                 },
-                "favoriteColor": {
+                "prescription": {
                   "example": "any"
                 },
-                "birthday": {
+                "refillable": {
                   "example": "any"
                 }
               }
@@ -126,6 +116,9 @@
         "responses": {
           "204": {
             "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
           },
           "500": {
             "description": "Internal Server Error"
@@ -143,8 +136,11 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           },
           "500": {
             "description": "Internal Server Error"
