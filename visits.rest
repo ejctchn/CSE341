@@ -1,4 +1,6 @@
 ###
+GET http://localhost:3000/doc_visits/auth
+###
 GET http://localhost:3000/doc_visits/
 ###
 POST http://localhost:3000/doc_visits/ HTTP/1.1
