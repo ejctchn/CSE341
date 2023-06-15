@@ -8,7 +8,7 @@ const bodyParser = require('express');
 
 const port = process.env.PORT || 3000;
 
-app.use(session({secret : GITHUB_CLIENT_SECRET, resave : false, saveUninitialized : true}))
+app.use(session({secret : process.env.GITHUB_CLIENT_SECRET, resave : false, saveUninitialized : true}))
 
 app
     .use(bodyParser.json())
@@ -31,15 +31,15 @@ mongodb.initDb((err, mongodb) => {
 
 app.get('/login', (req, res) => 
     {
-        res.redirect(`https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&prompt=consent`);
+        res.redirect(`https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}&prompt=consent`);
     });
 
 app.get('/oauth-callback', (req, res) => {
     console.log("Test");
     const { code } = req.query;
     const body = {
-      client_id: GITHUB_CLIENT_ID,
-      client_secret: GITHUB_CLIENT_SECRET,
+      client_id: process.env.GITHUB_CLIENT_ID,
+      client_secret: process.env.GITHUB_CLIENT_SECRET,
       code,
     };
     const opts = { headers: { accept: 'application/json' } };
