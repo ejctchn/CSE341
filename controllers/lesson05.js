@@ -5,10 +5,6 @@ const ObjectId = require('mongodb').ObjectId;
 
 
 
-const getAuth = async (req, res, next) =>
-{
-    res.redirect(`https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}`);
-};
 
 const getAllVisits = async (req, res, next) => 
 {
@@ -156,7 +152,6 @@ const deleteVisitById = async (req, res, next) =>
 
 module.exports =
 {
-    getAuth,
     getAllVisits,
     postNewVisit,
     updateVisit,

@@ -1,17 +1,33 @@
 const routes = require('express').Router();
 const controller = require("../controllers/lesson05")
-
-routes.get('/:auth', controller.getAuth);
+const ensure_auth = (req, res, next) => 
+{
+    try
+    {
+        if(req.session.token)
+        {
+            next();
+        }
+        else
+        {
+            throw new Error("Please log in.")
+        }
+    }
+    catch(error)
+    {
+        res.status(500).json({message:error.message});    
+    }
+}
 
 routes.get('/', controller.getAllVisits);
 
-routes.post('/', controller.postNewVisit);
+routes.post('/', ensure_auth, controller.postNewVisit);
 
-routes.put('/:id', controller.updateVisit);
+routes.put('/:id', ensure_auth, controller.updateVisit);
 
 //routes.put('/:id', controller.updateContact);
 
-routes.delete('/:id', controller.deleteVisitById);
+routes.delete('/:id', ensure_auth, controller.deleteVisitById);
 
 
 

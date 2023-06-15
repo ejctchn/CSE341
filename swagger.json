@@ -5,10 +5,10 @@
     "description": "Doc Visits API",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "cse341-render-yq1g.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/api-docs": {
@@ -43,6 +43,9 @@
             "schema": {
               "type": "object",
               "properties": {
+                "fname": {
+                  "example": "any"
+                },
                 "date": {
                   "example": "any"
                 },
@@ -68,6 +71,9 @@
         "responses": {
           "201": {
             "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
           },
           "500": {
             "description": "Internal Server Error"
