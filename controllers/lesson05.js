@@ -225,6 +225,5 @@ module.exports =
     postNewVisit,
     updateVisit,
     deleteVisitById,
-    getVisitById,
-    modify
+    getVisitById
 };
