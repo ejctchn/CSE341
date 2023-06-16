@@ -5,7 +5,7 @@ const doc = {
     title: 'My API',
     description: 'Doc Visits API'
   },
-  host: 'cse341-render-yq1g.onrender.com',
+  host: 'cse341-project02.onrender.com/',
   schemes: ['https']
   // host: 'localhost:3000',
   // schemes: ['http']

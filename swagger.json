@@ -5,7 +5,7 @@
     "description": "Doc Visits API",
     "version": "1.0.0"
   },
-  "host": "cse341-render-yq1g.onrender.com",
+  "host": "cse341-project02.onrender.com/",
   "basePath": "/",
   "schemes": [
     "https"
