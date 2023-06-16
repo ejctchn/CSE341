@@ -77,6 +77,27 @@ const postNewVisit = async (req, res, next) =>
         {
             res.status(500).json(result.error)
         }
+
+        const modified =
+        {
+            date: today_date,
+            modified_field: "New Visit Created",
+            modified_id: userId
+        };
+        const mod = await mongodb
+            .getDb()
+            .db('project02')
+            .collection('modifications')
+            .insertOne({modified});
+
+        if(mod.acknowledged)
+        {
+            res.status(201).json(mod)
+        }
+        else
+        {
+            res.status(500).json(mod.error)
+        }
     }
     catch(error)
     {
@@ -114,6 +135,27 @@ const updateVisit = async (req, res) =>
         } else {
             res.status(500).json(response.error || 'Some error occurred while updating the contact.');
         }
+
+        const modified =
+        {
+            date: today_date,
+            modified_field: "Updated Visit",
+            modified_id: userId
+        };
+        const mod = await mongodb
+            .getDb()
+            .db('project02')
+            .collection('modifications')
+            .insertOne({modified});
+
+        if(mod.acknowledged)
+        {
+            res.status(201).json(mod)
+        }
+        else
+        {
+            res.status(500).json(mod.error)
+        }
     }
     catch(error)
     {
@@ -141,6 +183,33 @@ const deleteVisitById = async (req, res, next) =>
         } else {
             res.status(500).json(response.error || 'Some error occurred while deleting the contact.');
         }
+        // modified collection
+        const d = new Date();
+        const day = d.getDate();
+        const month = d.getMonth() + 1;
+        const year = d.getFullYear();
+        let today_date = `${month}/${day}/${year}`;
+
+        const modified =
+        {
+            date: today_date,
+            modified_field: "Deleted Visit",
+            modified_id: userId
+        };
+        const mod = await mongodb
+            .getDb()
+            .db('project02')
+            .collection('modifications')
+            .insertOne({modified});
+
+        if(mod.acknowledged)
+        {
+            res.status(201).json(mod)
+        }
+        else
+        {
+            res.status(500).json(mod.error)
+        }
     }
     catch(error)
     {
@@ -156,5 +225,6 @@ module.exports =
     postNewVisit,
     updateVisit,
     deleteVisitById,
-    getVisitById
+    getVisitById,
+    modify
 };
