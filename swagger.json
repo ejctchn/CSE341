@@ -46,6 +46,12 @@
                 "fname": {
                   "example": "any"
                 },
+                "patient_fname": {
+                  "example": "any"
+                },
+                "patient_lname": {
+                  "example": "any"
+                },
                 "date": {
                   "example": "any"
                 },

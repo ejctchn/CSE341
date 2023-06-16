@@ -76,6 +76,8 @@ const postNewVisit = async (req, res, next) =>
         }
         const visit = 
         {
+            patient_fname: req.body.patient_fname,
+            patient_lname: req.body.patient_lname,
             date: req.body.date,
             doc_fname: req.body.doc_fname,
             doc_lname: req.body.doc_lname,
@@ -116,6 +118,8 @@ const updateVisit = async (req, res) =>
             const userId = new ObjectId(req.params.id);
         // be aware of updateOne if you only want to update specific fields
         const visit = {
+            patient_fname: req.body.patient_fname,
+            patient_lname: req.body.patient_lname,
             date: req.body.date,
             doc_fname: req.body.doc_fname,
             doc_lname: req.body.doc_lname,
