@@ -4,7 +4,26 @@ const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
 
 
+const modify = async (req, res, next) =>
+{
+    const d = new Date();
+    const day = d.getDate();
+    const month = d.getMonth() + 1;
+    const year = d.getFullYear();
+    let today_date = `${month}/${day}/${year}`;
 
+    const modified =
+    {
+        date: today_date,
+        modified_field: "Modified Visit",
+    };
+    const mod = await mongodb
+        .getDb()
+        .db('project02')
+        .collection('modifications')
+        .insertOne(modified);
+
+}
 
 const getAllVisits = async (req, res, next) => 
 {
@@ -72,31 +91,11 @@ const postNewVisit = async (req, res, next) =>
         if(result.acknowledged)
         {
             res.status(201).json(result)
+            modify();
         }
         else
         {
             res.status(500).json(result.error)
-        }
-
-        const modified =
-        {
-            date: today_date,
-            modified_field: "New Visit Created",
-            modified_id: userId
-        };
-        const mod = await mongodb
-            .getDb()
-            .db('project02')
-            .collection('modifications')
-            .insertOne({modified});
-
-        if(mod.acknowledged)
-        {
-            res.status(201).json(mod)
-        }
-        else
-        {
-            res.status(500).json(mod.error)
         }
     }
     catch(error)
@@ -130,31 +129,14 @@ const updateVisit = async (req, res) =>
             .collection('doc_visits')
             .replaceOne({ _id: userId }, visit);
         console.log(response);
-        if (response.modifiedCount > 0) {
+        if (response.modifiedCount > 0)
+        {
             res.status(204).send();
-        } else {
+            modify();
+        } 
+        else 
+        {
             res.status(500).json(response.error || 'Some error occurred while updating the contact.');
-        }
-
-        const modified =
-        {
-            date: today_date,
-            modified_field: "Updated Visit",
-            modified_id: userId
-        };
-        const mod = await mongodb
-            .getDb()
-            .db('project02')
-            .collection('modifications')
-            .insertOne({modified});
-
-        if(mod.acknowledged)
-        {
-            res.status(201).json(mod)
-        }
-        else
-        {
-            res.status(500).json(mod.error)
         }
     }
     catch(error)
@@ -178,37 +160,14 @@ const deleteVisitById = async (req, res, next) =>
         .collection('doc_visits')
         .deleteOne({ _id: userId }, true);
         console.log(response);
-        if (response.deletedCount > 0) {
+        if (response.deletedCount > 0) 
+        {
             res.status(200).send();
-        } else {
+            modify();
+        } 
+        else 
+        {
             res.status(500).json(response.error || 'Some error occurred while deleting the contact.');
-        }
-        // modified collection
-        const d = new Date();
-        const day = d.getDate();
-        const month = d.getMonth() + 1;
-        const year = d.getFullYear();
-        let today_date = `${month}/${day}/${year}`;
-
-        const modified =
-        {
-            date: today_date,
-            modified_field: "Deleted Visit",
-            modified_id: userId
-        };
-        const mod = await mongodb
-            .getDb()
-            .db('project02')
-            .collection('modifications')
-            .insertOne({modified});
-
-        if(mod.acknowledged)
-        {
-            res.status(201).json(mod)
-        }
-        else
-        {
-            res.status(500).json(mod.error)
         }
     }
     catch(error)
@@ -216,7 +175,6 @@ const deleteVisitById = async (req, res, next) =>
         res.status(400).json({message:error.message});
     }
 };
-
 
 
 module.exports =
