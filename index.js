@@ -5,9 +5,11 @@ const session = require('express-session');
 const axios = require('axios');
 const app = express();
 const bodyParser = require('express');
+const cors = require('cors');
 
 const port = process.env.PORT || 3000;
 
+app.use(cors({origin : '*'}))
 app.use(session({secret : process.env.GITHUB_CLIENT_SECRET, resave : false, saveUninitialized : true}))
 
 app
